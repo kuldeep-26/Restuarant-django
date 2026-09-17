@@ -1,0 +1,76 @@
+{% load static %}
+
+<header class="site-header">
+  <nav class="navbar">
+    <div class="nav-container">
+      <!-- Logo -->
+
+      <a href="{% url 'home' %}" class="logo">
+        <span class="logo-main"> Brew </span>
+
+        <span class="logo-accent"> & </span>
+
+        <span class="logo-main"> Bite </span>
+      </a>
+
+      <!-- Navigation -->
+
+      <div class="nav-links" id="navLinks">
+        <a
+          href="{% url 'home' %}"
+          class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}"
+        >
+          Home
+        </a>
+
+        <a
+          href="{% url 'menu' %}"
+          class="{% if request.resolver_match.url_name == 'menu' %}active{% endif %}"
+        >
+          Menu
+        </a>
+
+        <a
+          href="{% url 'about' %}"
+          class="{% if request.resolver_match.url_name == 'about' %}active{% endif %}"
+        >
+          About
+        </a>
+
+        <a
+          href="{% url 'gallery' %}"
+          class="{% if request.resolver_match.url_name == 'gallery' %}active{% endif %}"
+        >
+          Gallery
+        </a>
+
+        <a
+          href="{% url 'reviews' %}"
+          class="{% if request.resolver_match.url_name == 'reviews' %}active{% endif %}"
+        >
+          Reviews
+        </a>
+
+        <a
+          href="{% url 'contact' %}"
+          class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}"
+        >
+          Contact
+        </a>
+
+        <a href="#" class="nav-button"> Book a Table </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+
+      <button
+        class="mobile-menu-button"
+        id="mobileMenuButton"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+      >
+        ☰
+      </button>
+    </div>
+  </nav>
+</header>

@@ -1,0 +1,461 @@
+{% extends 'base.html' %} 
+{% load static %} 
+
+{% block title %} Brew & Bite | Café & Restaurant {% endblock %} 
+
+{% block content %}
+
+<!-- =========================================
+     HERO SECTION
+========================================= -->
+
+<section class="hero">
+  <div class="container hero-container">
+    <div class="hero-content">
+      <p class="hero-subtitle">WELCOME TO BREW & BITE</p>
+
+      <h1>
+        Where Great
+        <span>Food</span>
+        Meets Great Moments.
+      </h1>
+
+      <p class="hero-description">
+        Discover handcrafted coffee, delicious food, and a warm atmosphere made
+        for good conversations and unforgettable moments.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="{% url 'menu' %}" class="primary-button"> Explore Our Menu </a>
+
+        <a href="#" class="secondary-button"> Reserve a Table </a>
+      </div>
+
+      <!-- RATING -->
+
+      <div class="hero-rating">
+        <div class="stars">★★★★★</div>
+
+        <div>
+          <strong> 4.9/5 </strong>
+
+          <span> from 500+ happy guests </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================
+     WELCOME SECTION
+========================================= -->
+
+<section class="welcome-section reveal">
+  <div class="container welcome-container">
+    <div class="section-heading">
+      <p class="section-label">OUR PHILOSOPHY</p>
+
+      <h2>
+        Good Food.
+        <br />
+        Good Coffee.
+        <br />
+        Good Company.
+      </h2>
+    </div>
+
+    <div class="welcome-text">
+      <p>
+        At Brew & Bite, we believe that dining is more than just eating. It's
+        about slowing down, sharing stories, and enjoying the little moments.
+      </p>
+
+      <p>
+        From our carefully roasted coffee beans to our freshly prepared dishes,
+        everything we serve is made with passion.
+      </p>
+
+      <a href="#"> Discover Our Story → </a>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================
+     FEATURED MENU
+========================================= -->
+
+<section class="featured-section reveal">
+  <div class="container">
+    <div class="section-heading center">
+      <p class="section-label">OUR FAVORITES</p>
+
+      <h2>Taste Something Special</h2>
+
+      <p>A few favorites from our kitchen and coffee bar.</p>
+    </div>
+
+    <div class="food-grid">
+      <!-- FOOD CARD -->
+
+      <article class="food-card reveal reveal-delay-1">
+        <div class="food-image">
+          <img
+            src="{% static 'images/menu/pasta.jpg' %}"
+            alt="Creamy Alfredo Pasta"
+          />
+
+          <span class="food-badge"> Popular </span>
+        </div>
+
+        <div class="food-content">
+          <div class="food-title">
+            <h3>Creamy Alfredo Pasta</h3>
+
+            <span> ₹320 </span>
+          </div>
+
+          <p>Homemade pasta tossed in a rich parmesan cream sauce.</p>
+        </div>
+      </article>
+
+      <!-- FOOD CARD -->
+
+      <article class="food-card reveal reveal-delay-2">
+        <div class="food-image">
+          <img
+            src="{% static 'images/menu/burger.jpg' %}"
+            alt="Classic Burger"
+          />
+
+          <span class="food-badge"> Chef's Choice </span>
+        </div>
+
+        <div class="food-content">
+          <div class="food-title">
+            <h3>Classic Brew Burger</h3>
+
+            <span> ₹280 </span>
+          </div>
+
+          <p>
+            Juicy grilled patty with fresh vegetables, cheese and our signature
+            sauce.
+          </p>
+        </div>
+      </article>
+
+      <!-- FOOD CARD -->
+
+      <article class="food-card reveal reveal-delay-3">
+        <div class="food-image">
+          <img src="{% static 'images/menu/coffee.jpg' %}" alt="Cappuccino" />
+
+          <span class="food-badge"> Bestseller </span>
+        </div>
+
+        <div class="food-content">
+          <div class="food-title">
+            <h3>Signature Cappuccino</h3>
+
+            <span> ₹180 </span>
+          </div>
+
+          <p>
+            Rich espresso topped with perfectly steamed milk and silky foam.
+          </p>
+        </div>
+      </article>
+    </div>
+
+    <div class="section-button">
+      <a href="{% url 'menu' %}" class="outline-button"> View Full Menu → </a>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================
+     ABOUT / STORY
+========================================= -->
+
+<section class="story-section reveal">
+  <div class="container story-container">
+    <div class="story-image">
+      <img src="{% static 'images/about/story.jpg' %}" alt="Brew & Bite Cafe" />
+    </div>
+
+    <div class="story-content">
+      <p class="section-label">OUR STORY</p>
+
+      <h2>A Place Made For Moments.</h2>
+
+      <p>
+        What began as a small coffee counter grew into a cozy gathering place
+        for friends, families, and food lovers.
+      </p>
+
+      <p>
+        We source quality ingredients, work with passionate people, and prepare
+        every dish with care.
+      </p>
+
+      <div class="story-stats">
+        <div>
+          <strong> 7+ </strong>
+
+          <span> Years of Passion </span>
+        </div>
+
+        <div>
+          <strong> 50K+ </strong>
+
+          <span> Happy Guests </span>
+        </div>
+
+        <div>
+          <strong> 30+ </strong>
+
+          <span> Menu Favorites </span>
+        </div>
+      </div>
+
+      <a href="#" class="text-button"> More About Us → </a>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================
+     WHY CHOOSE US
+========================================= -->
+
+<section class="features-section reveal">
+
+    <div class="container">
+
+        <div class="section-heading center">
+
+            <p class="section-label">
+                WHY CHOOSE US
+            </p>
+
+            <h2>
+                More Than Just Coffee
+            </h2>
+
+            <p>
+                We create experiences worth coming back for.
+            </p>
+
+        </div>
+
+
+        <div class="features-grid">
+
+            <!-- FEATURE -->
+
+            <article class="feature reveal reveal-delay-1">
+
+                <div class="feature-icon">
+                    ☕
+                </div>
+
+                <h3>
+                    Quality Coffee
+                </h3>
+
+                <p>
+                    Carefully selected beans and expertly
+                    crafted coffee in every cup.
+                </p>
+
+            </article>
+
+
+            <!-- FEATURE -->
+
+            <article class="feature reveal reveal-delay-2">
+
+                <div class="feature-icon">
+                    🍴
+                </div>
+
+                <h3>
+                    Fresh Food
+                </h3>
+
+                <p>
+                    Fresh ingredients and thoughtfully
+                    prepared dishes made with care.
+                </p>
+
+            </article>
+
+
+            <!-- FEATURE -->
+
+            <article class="feature reveal reveal-delay-3">
+
+                <div class="feature-icon">
+                    ❤️
+                </div>
+
+                <h3>
+                    Cozy Atmosphere
+                </h3>
+
+                <p>
+                    A warm and welcoming space designed
+                    for conversations and memorable moments.
+                </p>
+
+            </article>
+
+
+            <!-- FEATURE -->
+
+            <article class="feature reveal reveal-delay-4">
+
+                <div class="feature-icon">
+                    ✨
+                </div>
+
+                <h3>
+                    Made With Passion
+                </h3>
+
+                <p>
+                    From our kitchen to your table,
+                    everything is made with genuine passion.
+                </p>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================================
+     CHEF SPECIAL
+========================================= -->
+
+<section class="chef-section reveal">
+  <div class="chef-image">
+    <img src="{% static 'images/chefs/chef.jpg' %}" alt="Our Chef" />
+  </div>
+
+  <div class="chef-content">
+    <p class="section-label">CHEF'S SPECIAL</p>
+
+    <h2>Made By Passion. Served With Pride.</h2>
+
+    <p>
+      Our chefs combine classic techniques with modern flavors to create dishes
+      that feel familiar yet exciting.
+    </p>
+
+    <a href="#" class="primary-button"> Meet Our Chef </a>
+  </div>
+</section>
+
+<!-- =========================================
+     CUSTOMER REVIEWS
+========================================= -->
+
+<section class="reviews-section home-reviews reveal">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label"> CUSTOMER STORIES </span>
+
+      <h2>What Our Guests Say</h2>
+
+      <p>A few words from the people who have experienced Brew & Bite.</p>
+    </div>
+
+    {% if review_stats.total_reviews %}
+
+    <div class="home-review-rating">
+
+        <strong>
+            {{ review_stats.average_rating|floatformat:1 }}
+        </strong>
+
+        <span>
+            ★★★★★
+        </span>
+
+        <small>
+            from {{ review_stats.total_reviews }} reviews
+        </small>
+
+    </div>
+
+    {% endif %}
+
+    {% if featured_reviews %}
+
+    <div class="reviews-grid">
+      {% for review in featured_reviews %}
+
+      <article class="review-card">
+        <div class="review-stars">
+          {% for star in "12345" %} {% if forloop.counter <= review.rating %} ★
+          {% else %} ☆ {% endif %} {% endfor %}
+        </div>
+
+        <blockquote>"{{ review.comment }}"</blockquote>
+
+        <div class="review-author">
+          <div class="review-avatar">{{ review.name|first|upper }}</div>
+
+          <div>
+            <h3>{{ review.name }}</h3>
+
+            <span> Guest </span>
+          </div>
+        </div>
+      </article>
+
+      {% endfor %}
+    </div>
+
+    <div class="reviews-button-wrapper">
+      <a href="{% url 'reviews' %}" class="secondary-button">
+        READ ALL REVIEWS
+      </a>
+    </div>
+
+    {% else %}
+
+    <div class="no-reviews">
+      <p>We'd love to hear about your experience.</p>
+
+      <a href="{% url 'reviews' %}" class="secondary-button">
+        LEAVE A REVIEW
+      </a>
+    </div>
+
+    {% endif %}
+  </div>
+</section>
+
+<!-- =========================================
+     RESERVATION CTA
+========================================= -->
+
+<section class="reservation-cta reveal">
+  <div class="container">
+    <p class="section-label">YOUR TABLE AWAITS</p>
+
+    <h2>Make Your Next Moment Special.</h2>
+
+    <p>
+      Gather your people, pick your favorite dishes, and let us take care of the
+      rest.
+    </p>
+
+    <a href="#" class="primary-button"> Reserve Your Table </a>
+  </div>
+</section>
+
+{% endblock %}

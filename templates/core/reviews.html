@@ -1,0 +1,160 @@
+{% extends 'base.html' %} 
+{% load static %} 
+
+{% block title %} Reviews | Brew & Bite {% endblock %} 
+
+{% block content %}
+
+<!-- =========================================
+     REVIEWS HERO
+========================================= -->
+
+<section class="reviews-hero">
+  <div class="reviews-hero-overlay"></div>
+
+  <div class="reviews-hero-content">
+    <span class="section-label"> CUSTOMER STORIES </span>
+
+    <h1>What Our Guests Say</h1>
+
+    <p>
+      Great food tastes even better when shared. Here's what our guests have to
+      say about their Brew & Bite experience.
+    </p>
+  </div>
+</section>
+
+<!-- =========================================
+     REVIEWS
+========================================= -->
+
+<section class="reviews-section">
+  <div class="container">
+    <div class="reviews-header">
+      <span class="section-label"> REVIEWS </span>
+
+      <h2>Loved By Our Guests</h2>
+
+      <p>Every review means a lot to our team.</p>
+
+      {% if review_stats.total_reviews %}
+
+      <div class="review-summary">
+        <div class="review-average">
+          <strong> {{ review_stats.average_rating|floatformat:1 }} </strong>
+
+          <span> / 5 </span>
+        </div>
+
+        <div class="review-summary-details">
+          <div class="summary-stars">
+            {% for star in "12345" %} {% if forloop.counter <= review_stats.average_rating %} ★ {% else %} ☆ {% endif %} {% endfor%}
+          </div>
+
+          <span>
+            Based on {{ review_stats.total_reviews }} review{{
+            review_stats.total_reviews|pluralize }}
+          </span>
+        </div>
+      </div>
+
+      {% endif %}
+    </div>
+
+    {% if reviews %}
+
+    <div class="reviews-grid">
+      {% for review in reviews %}
+
+      <article class="review-card">
+        <div class="review-stars">
+          {% for star in "12345" %} {% if forloop.counter <= review.rating %} ★
+          {% else %} ☆ {% endif %} {% endfor %}
+        </div>
+
+        <blockquote>"{{ review.comment }}"</blockquote>
+
+        <div class="review-author">
+          <div class="review-avatar">{{ review.name|first|upper }}</div>
+
+          <div>
+            <h3>{{ review.name }}</h3>
+
+            <span> Verified Guest </span>
+          </div>
+        </div>
+      </article>
+
+      {% endfor %}
+    </div>
+
+    {% else %}
+
+    <div class="no-reviews">
+      <p>Be the first to share your Brew & Bite experience!</p>
+    </div>
+
+    {% endif %}
+  </div>
+</section>
+
+<!-- =========================================
+     SUBMIT REVIEW
+========================================= -->
+
+<section class="review-form-section">
+  <div class="container">
+    <div class="review-form-container">
+      <div class="review-form-header">
+        <span class="section-label"> SHARE YOUR EXPERIENCE </span>
+
+        <h2>Tell Us What You Think</h2>
+
+        <p>
+          We value your feedback. Share your experience and help other guests
+          discover Brew & Bite.
+        </p>
+      </div>
+
+      <form method="POST" class="review-form">
+        {% csrf_token %}
+
+        <div class="form-group">
+          <label for="{{ form.name.id_for_label }}"> Your Name </label>
+
+          {{ form.name }} {% if form.name.errors %}
+
+          <div class="form-error">{{ form.name.errors }}</div>
+
+          {% endif %}
+        </div>
+
+        <div class="form-group">
+          <label for="{{ form.rating.id_for_label }}"> Rating </label>
+
+          {{ form.rating }} {% if form.rating.errors %}
+
+          <div class="form-error">{{ form.rating.errors }}</div>
+
+          {% endif %}
+        </div>
+
+        <div class="form-group">
+          <label for="{{ form.comment.id_for_label }}"> Your Review </label>
+
+          {{ form.comment }} {% if form.comment.errors %}
+
+          <div class="form-error">{{ form.comment.errors }}</div>
+
+          {% endif %}
+        </div>
+
+        <button type="submit" class="primary-button review-submit">
+          SUBMIT REVIEW
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,125 @@
+{% extends 'base.html' %} 
+
+{% block title %} Menu | Brew & Bite {% endblock %} 
+
+{% block content %}
+
+<!-- =========================================
+     MENU HERO
+========================================= -->
+
+<section class="menu-hero">
+  <div class="container">
+    <p class="section-label">OUR MENU</p>
+
+    <h1>
+      Good Food.
+      <br />
+      Great Flavors.
+    </h1>
+
+    <p>
+      Explore our selection of freshly prepared dishes, handcrafted drinks and
+      delicious desserts.
+    </p>
+  </div>
+</section>
+
+<!-- =========================================
+     MENU SECTION
+========================================= -->
+
+<section class="menu-section">
+  <div class="container">
+    <!-- CATEGORY FILTER -->
+
+    <div class="category-filters">
+      <button class="category-button active" data-category="all">All</button>
+
+      {% for category in categories %}
+
+      <button class="category-button" data-category="{{ category.id }}">
+        {{ category.name }}
+      </button>
+
+      {% endfor %}
+    </div>
+
+    <!-- MENU GRID -->
+
+    <div class="full-menu-grid">
+      {% for item in menu_items %}
+
+      <article class="menu-card" data-category="{{ item.category.id }}">
+        <!-- IMAGE -->
+
+        <div class="menu-card-image">
+          {% if item.image %}
+
+          <img
+            src="{{ item.image.url }}"
+            alt="{{ item.name }}"
+            loading="lazy"
+          />
+
+          {% else %}
+
+          <div class="image-placeholder">No Image</div>
+
+          {% endif %} {% if item.is_popular %}
+
+          <span class="menu-badge"> Popular </span>
+
+          {% endif %}
+        </div>
+
+        <!-- CONTENT -->
+
+        <div class="menu-card-content">
+          <div class="menu-card-heading">
+            <h2>{{ item.name }}</h2>
+
+            <span class="menu-price"> ₹{{ item.price }} </span>
+          </div>
+
+          <p class="menu-description">{{ item.description }}</p>
+
+          <div class="menu-meta">
+            <span> {{ item.category.name }} </span>
+
+          </div>
+        </div>
+      </article>
+
+      {% empty %}
+
+      <div class="empty-menu">
+        <h2>Menu Coming Soon</h2>
+
+        <p>We're preparing something delicious. Please check back soon.</p>
+      </div>
+
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- =========================================
+     MENU CTA
+========================================= -->
+
+<section class="menu-cta">
+  <div class="container">
+    <p class="section-label">HAVE A SPECIAL OCCASION?</p>
+
+    <h2>Let Us Make It Memorable.</h2>
+
+    <p>
+      Planning a birthday, dinner or private gathering? We'd love to host you.
+    </p>
+
+    <a href="#" class="primary-button"> Contact Us </a>
+  </div>
+</section>
+
+{% endblock %}

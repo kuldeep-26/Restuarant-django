@@ -1,0 +1,126 @@
+{% extends 'base.html' %} 
+{% load static %} 
+
+{% block title %} Gallery | Brew & Bite {% endblock %} 
+
+{% block content %}
+
+<!-- =========================================
+     GALLERY HERO
+========================================= -->
+
+<section class="gallery-hero">
+  <div class="container">
+    <p class="section-label">OUR GALLERY</p>
+
+    <h1>
+      A Taste Before
+      <br />
+      You Visit.
+    </h1>
+
+    <p>
+      Take a look inside Brew & Bite and discover the food, people, and moments
+      that make us special.
+    </p>
+  </div>
+</section>
+
+<!-- =========================================
+     GALLERY
+========================================= -->
+
+<section class="gallery-section">
+  <div class="container">
+    <!-- FILTERS -->
+
+    <div class="gallery-filters">
+      <button class="gallery-filter active" data-filter="all">All</button>
+
+      <button class="gallery-filter" data-filter="food">Food</button>
+
+      <button class="gallery-filter" data-filter="interior">Interior</button>
+
+      <button class="gallery-filter" data-filter="coffee">Coffee</button>
+
+      <button class="gallery-filter" data-filter="events">Events</button>
+    </div>
+
+    <!-- IMAGE GRID -->
+
+    <div class="gallery-grid">
+      {% for image in gallery_images %}
+
+      <div
+        class="gallery-item"
+        data-category="{{ image.category }}"
+        data-image="{{ image.image.url }}"
+        data-title="{{ image.title }}"
+      >
+        <img
+          src="{{ image.image.url }}"
+          alt="{{ image.title }}"
+          loading="lazy"
+        />
+
+        <div class="gallery-overlay">
+          <span> {{ image.title }} </span>
+
+          <span class="gallery-view"> View </span>
+        </div>
+      </div>
+
+      {% empty %}
+
+      <div class="gallery-empty">
+        <h2>Gallery Coming Soon</h2>
+
+        <p>We're preparing some beautiful moments to share with you.</p>
+      </div>
+
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- =========================================
+     LIGHTBOX
+========================================= -->
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close image">
+    ×
+  </button>
+
+  <button class="lightbox-prev" id="lightboxPrev" aria-label="Previous image">
+    ←
+  </button>
+
+  <div class="lightbox-content">
+    <img id="lightboxImage" src="" alt="" />
+
+    <p id="lightboxTitle"></p>
+  </div>
+
+  <button class="lightbox-next" id="lightboxNext" aria-label="Next image">
+    →
+  </button>
+</div>
+
+<!-- =========================================
+     CTA
+========================================= -->
+
+<section class="gallery-cta">
+  <div class="container">
+    <p class="section-label">COME SEE IT FOR YOURSELF</p>
+
+    <h2>Your Table Is Waiting.</h2>
+
+    <p>Great food tastes even better when shared with great people.</p>
+
+    <a href="{% url 'menu' %}" class="primary-button"> Explore Our Menu </a>
+  </div>
+</section>
+
+{% endblock %}

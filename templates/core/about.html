@@ -1,0 +1,210 @@
+{% extends 'base.html' %} 
+{% load static %} 
+
+{% block title %} About Us | Brew & Bite {% endblock %} 
+
+{% block content %}
+
+<!-- =========================================
+     ABOUT HERO
+========================================= -->
+
+<section class="about-hero">
+  <div class="container">
+    <p class="section-label">OUR STORY</p>
+
+    <h1>
+      More Than Just
+      <br />
+      Coffee & Food.
+    </h1>
+
+    <p>A place to slow down, connect, and enjoy the little things.</p>
+  </div>
+</section>
+
+<!-- =========================================
+     OUR STORY
+========================================= -->
+
+<section class="about-story">
+  <div class="container about-story-container">
+    <div class="about-story-image">
+      <img
+        src="{% static 'images/about/story.jpg' %}"
+        alt="Inside Brew & Bite cafe"
+      />
+    </div>
+
+    <div class="about-story-content">
+      <p class="section-label">HOW IT STARTED</p>
+
+      <h2>From A Small Idea To A Place People Call Home.</h2>
+
+      <p>
+        Brew & Bite started with a simple idea: create a place where people
+        could enjoy genuinely good coffee and delicious food without feeling
+        rushed.
+      </p>
+
+      <p>
+        What began as a small neighborhood café slowly grew into a place where
+        friends meet, families celebrate, and people come to enjoy a quiet
+        moment with a cup of coffee.
+      </p>
+
+      <p>
+        Today, our philosophy remains the same. Keep things simple, use quality
+        ingredients, and make every guest feel welcome.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================
+     STATS
+========================================= -->
+
+<section class="about-stats">
+  <div class="container stats-grid">
+    <div class="stat-item">
+      <strong> 7+ </strong>
+
+      <span> Years of Passion </span>
+    </div>
+
+    <div class="stat-item">
+      <strong> 50K+ </strong>
+
+      <span> Happy Guests </span>
+    </div>
+
+    <div class="stat-item">
+      <strong> 30+ </strong>
+
+      <span> Menu Favorites </span>
+    </div>
+
+    <div class="stat-item">
+      <strong> 4.9 </strong>
+
+      <span> Average Rating </span>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================
+     PHILOSOPHY
+========================================= -->
+
+<section class="philosophy-section">
+  <div class="container philosophy-container">
+    <p class="section-label">OUR PHILOSOPHY</p>
+
+    <h2>"We believe the best moments happen around a table."</h2>
+
+    <p>
+      Food brings people together. Coffee starts conversations. And a welcoming
+      space gives those moments somewhere to happen.
+    </p>
+  </div>
+</section>
+
+<!-- =========================================
+     OUR VALUES
+========================================= -->
+
+<section class="values-section">
+  <div class="container">
+    <div class="section-heading center">
+      <p class="section-label">WHAT WE BELIEVE IN</p>
+
+      <h2>Our Values</h2>
+    </div>
+
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="value-number">01</div>
+
+        <h3>Quality First</h3>
+
+        <p>We choose ingredients carefully and never compromise on quality.</p>
+      </div>
+
+      <div class="value-card">
+        <div class="value-number">02</div>
+
+        <h3>Keep It Fresh</h3>
+
+        <p>Our food is prepared fresh so every plate tastes its best.</p>
+      </div>
+
+      <div class="value-card">
+        <div class="value-number">03</div>
+
+        <h3>Made With Passion</h3>
+
+        <p>We care about every detail, from the kitchen to your table.</p>
+      </div>
+
+      <div class="value-card">
+        <div class="value-number">04</div>
+
+        <h3>People Matter</h3>
+
+        <p>Our guests and our team are at the heart of everything we do.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================
+     CHEF
+========================================= -->
+
+<section class="about-chef">
+  <div class="about-chef-image">
+    <img src="{% static 'images/chefs/chef.jpg' %}" alt="Chef at Brew & Bite" />
+  </div>
+
+  <div class="about-chef-content">
+    <p class="section-label">MEET OUR CHEF</p>
+
+    <h2>Passion On Every Plate.</h2>
+
+    <p>
+      Our kitchen is led by chefs who believe that great food doesn't need to be
+      complicated. It needs good ingredients, thoughtful preparation, and a
+      little creativity.
+    </p>
+
+    <p>
+      Every dish is designed to be comforting, memorable and worth coming back
+      for.
+    </p>
+
+    <div class="chef-signature">— Chef Arjun</div>
+  </div>
+</section>
+
+<!-- =========================================
+     CTA
+========================================= -->
+
+<section class="about-cta">
+  <div class="container">
+    <p class="section-label">READY TO VISIT?</p>
+
+    <h2>
+      Come Hungry.
+      <br />
+      Leave Happy.
+    </h2>
+
+    <p>Discover your new favorite place for food, coffee and good company.</p>
+
+    <a href="{% url 'menu' %}" class="primary-button"> Explore Our Menu </a>
+  </div>
+</section>
+
+{% endblock %}
