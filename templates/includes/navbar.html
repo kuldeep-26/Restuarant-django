@@ -4,17 +4,13 @@
   <nav class="navbar">
     <div class="nav-container">
       <!-- Logo -->
-
       <a href="{% url 'home' %}" class="logo">
-        <span class="logo-main"> Brew </span>
-
-        <span class="logo-accent"> & </span>
-
-        <span class="logo-main"> Bite </span>
+        <span class="logo-main">Brew</span>
+        <span class="logo-accent">&</span>
+        <span class="logo-main">Bite</span>
       </a>
 
       <!-- Navigation -->
-
       <div class="nav-links" id="navLinks">
         <a
           href="{% url 'home' %}"
@@ -58,6 +54,27 @@
           Contact
         </a>
 
+        <!-- Authentication -->
+
+        {% if user.is_authenticated %}
+
+        <a href="{% url 'profile' %}" class="nav-user"> Hi, {{ user.username }} </a>
+
+        <form method="POST" action="{% url 'logout' %}" class="nav-auth-form">
+          {% csrf_token %}
+
+          <button type="submit" class="nav-logout-button">Logout</button>
+        </form>
+
+        {% else %}
+
+        <a href="{% url 'login' %}" class="nav-auth-link"> Login </a>
+
+        <a href="{% url 'register' %}" class="nav-auth-link"> Register </a>
+
+        {% endif %}
+
+        <!-- Reservation -->
         <a href="#" class="nav-button"> Book a Table </a>
       </div>
 

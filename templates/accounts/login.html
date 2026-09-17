@@ -1,0 +1,83 @@
+{% extends 'base.html' %} 
+
+{% block title %}Login | Brew & Bite{% endblock %} 
+
+{% block content %}
+
+<section class="auth-section">
+  <div class="auth-container">
+    <div class="auth-header">
+      <p class="section-label">WELCOME BACK</p>
+
+      <h1>Login to Your Account</h1>
+
+      <p>Sign in to continue your Brew & Bite experience.</p>
+    </div>
+
+    <div class="auth-card">
+      <form method="POST" class="auth-form">
+        {% csrf_token %} {% if form.non_field_errors %}
+        <div class="auth-alert auth-alert-error">
+          <strong>Login failed</strong>
+
+          {{ form.non_field_errors }}
+        </div>
+        {% endif %}
+
+        <div class="form-group">
+          <label for="{{ form.username.id_for_label }}"> Username </label>
+
+          {{ form.username }} {% if form.username.errors %}
+          <div class="field-error">
+            {% for error in form.username.errors %}
+            <span>{{ error }}</span>
+            {% endfor %}
+          </div>
+          {% endif %}
+        </div>
+
+        <div class="form-group">
+          <label for="{{ form.password.id_for_label }}"> Password </label>
+
+          <div class="password-input-wrapper">
+            {{ form.password }}
+
+            <button
+              type="button"
+              class="password-toggle"
+              onclick="togglePassword('{{ form.password.id_for_label }}', this)"
+              aria-label="Show password"
+            >
+              SHOW
+            </button>
+          </div>
+
+          {% if form.password.errors %}
+          <div class="field-error">
+            {% for error in form.password.errors %}
+            <span>{{ error }}</span>
+            {% endfor %}
+          </div>
+          {% endif %}
+        </div>
+
+        <input type="hidden" name="next" value="{{ next }}" />
+
+        <button type="submit" class="primary-button auth-submit">LOGIN</button>
+      </form>
+
+      <div class="auth-footer">
+        <p>
+          <a href="{% url 'password_reset' %}"> Forgot your password? </a>
+        </p>
+
+        <p>
+          Don't have an account?
+          <a href="{% url 'register' %}"> Create one </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

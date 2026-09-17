@@ -1,0 +1,100 @@
+{% extends 'base.html' %} 
+
+{% block title %}My Account | Brew & Bite{% endblock%} 
+
+{% block content %}
+
+<section class="auth-section">
+  <div class="auth-container">
+    <div class="auth-header">
+      <p class="section-label">YOUR ACCOUNT</p>
+
+      <h1>My Account</h1>
+
+      <p>Manage your Brew & Bite profile information.</p>
+    </div>
+
+    <div class="auth-card">
+      <div class="profile-welcome">
+        <h2>Welcome, {{ user.username }}</h2>
+
+        <p>Update your personal information below.</p>
+      </div>
+
+      <form method="POST" class="auth-form">
+        {% csrf_token %}
+
+        <!-- Username -->
+
+        <div class="form-group">
+          <label> Username </label>
+
+          <input type="text" value="{{ user.username }}" disabled />
+
+          <small class="profile-help"> Username cannot be changed. </small>
+        </div>
+
+        <!-- First Name -->
+
+        <div class="form-group">
+          <label for="first_name"> First Name </label>
+
+          <input
+            type="text"
+            id="first_name"
+            name="first_name"
+            value="{{ user.first_name }}"
+            placeholder="Enter your first name"
+          />
+        </div>
+
+        <!-- Last Name -->
+
+        <div class="form-group">
+          <label for="last_name"> Last Name </label>
+
+          <input
+            type="text"
+            id="last_name"
+            name="last_name"
+            value="{{ user.last_name }}"
+            placeholder="Enter your last name"
+          />
+        </div>
+
+        <!-- Email -->
+
+        <div class="form-group">
+          <label for="email"> Email Address </label>
+
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value="{{ user.email }}"
+            placeholder="Enter your email address"
+          />
+        </div>
+
+        <button type="submit" class="primary-button auth-submit">
+          SAVE CHANGES
+        </button>
+      </form>
+
+      <div class="profile-actions">
+        <a href="{% url 'password_change' %}" class="profile-secondary-button">
+          CHANGE PASSWORD
+        </a>
+      </div>
+
+      <div class="auth-footer">
+        <p>
+          Logged in as
+          <strong>{{ user.username }}</strong>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

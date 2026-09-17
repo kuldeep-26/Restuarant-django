@@ -292,3 +292,98 @@ revealElements.forEach((element) => {
     revealObserver.observe(element);
 
 });
+
+/* =========================================
+   PASSWORD SHOW / HIDE
+========================================= */
+
+function togglePassword(inputId, button) {
+
+    const input = document.getElementById(inputId);
+
+    if (!input) {
+        return;
+    }
+
+    if (input.type === "password") {
+
+        input.type = "text";
+        button.textContent = "HIDE";
+        button.setAttribute("aria-label", "Hide password");
+
+    } else {
+
+        input.type = "password";
+        button.textContent = "SHOW";
+        button.setAttribute("aria-label", "Show password");
+
+    }
+}
+
+/* =========================================
+   AUTH ERROR FIELD HIGHLIGHT
+========================================= */
+
+document.querySelectorAll(".field-error").forEach((errorElement) => {
+
+    const formGroup = errorElement.closest(".form-group");
+
+    if (!formGroup) {
+        return;
+    }
+
+    const input = formGroup.querySelector("input, select, textarea");
+
+    if (input) {
+        input.classList.add("input-error");
+    }
+
+});
+
+/* =========================================
+   AUTH FORM SUBMIT STATE
+========================================= */
+
+document.querySelectorAll(".auth-form").forEach((form) => {
+
+    form.addEventListener("submit", () => {
+
+        const submitButton = form.querySelector(
+            'button[type="submit"]'
+        );
+
+        if (!submitButton) {
+            return;
+        }
+
+        submitButton.disabled = true;
+
+        const buttonText = submitButton.textContent.trim();
+
+        if (buttonText === "LOGIN") {
+            submitButton.textContent = "LOGGING IN...";
+        }
+
+        else if (buttonText === "CREATE ACCOUNT") {
+            submitButton.textContent = "CREATING ACCOUNT...";
+        }
+
+        else if (buttonText === "SAVE CHANGES") {
+            submitButton.textContent = "SAVING...";
+        }
+
+        else if (buttonText === "CHANGE PASSWORD") {
+            submitButton.textContent = "CHANGING PASSWORD...";
+        }
+
+        else if (buttonText === "SEND RESET LINK") {
+            submitButton.textContent = "SENDING...";
+        }
+
+        else if (buttonText === "SET NEW PASSWORD") {
+            submitButton.textContent = "UPDATING...";
+        }
+
+    });
+
+});
