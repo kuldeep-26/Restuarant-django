@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Reservation Request | Brew & Bite</title>
+
+</head>
+
+
+<body
+    style="
+        margin:0;
+        padding:0;
+        background:#f8f5ef;
+        font-family:Arial, Helvetica, sans-serif;
+        color:#3f3530;
+    "
+>
+
+    <div
+        style="
+            max-width:600px;
+            margin:40px auto;
+            background:#ffffff;
+            border:1px solid #e5ddd5;
+        "
+    >
+
+        <!-- Header -->
+
+        <div
+            style="
+                padding:30px;
+                background:#241a16;
+                text-align:center;
+            "
+        >
+
+            <h1
+                style="
+                    margin:0;
+                    color:#ffffff;
+                    font-family:Georgia, serif;
+                    font-size:30px;
+                    font-weight:500;
+                "
+            >
+                Brew <span style="color:#c48a5a;">&amp;</span> Bite
+            </h1>
+
+            <p
+                style="
+                    margin:8px 0 0;
+                    color:#ddd5cd;
+                    font-size:12px;
+                    letter-spacing:1.5px;
+                "
+            >
+                CAFÉ &amp; RESTAURANT
+            </p>
+
+        </div>
+
+
+        <!-- Content -->
+
+        <div style="padding:35px 30px;">
+
+            <p
+                style="
+                    margin:0 0 8px;
+                    color:#c48a5a;
+                    font-size:11px;
+                    font-weight:bold;
+                    letter-spacing:1.5px;
+                "
+            >
+                RESERVATION RECEIVED
+            </p>
+
+
+            <h2
+                style="
+                    margin:0 0 15px;
+                    color:#241a16;
+                    font-family:Georgia, serif;
+                    font-size:28px;
+                    font-weight:500;
+                "
+            >
+                Thank You, {{ reservation.name }}!
+            </h2>
+
+
+            <p
+                style="
+                    margin:0 0 25px;
+                    color:#756b64;
+                    font-size:14px;
+                    line-height:1.7;
+                "
+            >
+                We have received your table reservation request.
+                Our team will review it and confirm your reservation
+                shortly.
+            </p>
+
+
+            <!-- Reservation Details -->
+
+            <div
+                style="
+                    border:1px solid #e5ddd5;
+                "
+            >
+
+                <div
+                    style="
+                        padding:15px 18px;
+                        background:#faf7f2;
+                        border-bottom:1px solid #e5ddd5;
+                    "
+                >
+
+                    <strong
+                        style="
+                            color:#241a16;
+                            font-family:Georgia, serif;
+                            font-size:18px;
+                            font-weight:500;
+                        "
+                    >
+                        Reservation Details
+                    </strong>
+
+                </div>
+
+
+                <div
+                    style="
+                        padding:14px 18px;
+                        border-bottom:1px solid #eee7df;
+                    "
+                >
+
+                    <span style="color:#8b8078;font-size:12px;">
+                        Date
+                    </span>
+
+                    <strong
+                        style="
+                            float:right;
+                            color:#3f3530;
+                            font-size:13px;
+                        "
+                    >
+                        {{ reservation.date|date:"d M Y" }}
+                    </strong>
+
+                </div>
+
+
+                <div
+                    style="
+                        padding:14px 18px;
+                        border-bottom:1px solid #eee7df;
+                    "
+                >
+
+                    <span style="color:#8b8078;font-size:12px;">
+                        Time
+                    </span>
+
+                    <strong
+                        style="
+                            float:right;
+                            color:#3f3530;
+                            font-size:13px;
+                        "
+                    >
+                        {{ reservation.time|time:"g:i A" }}
+                    </strong>
+
+                </div>
+
+
+                <div
+                    style="
+                        padding:14px 18px;
+                        border-bottom:1px solid #eee7df;
+                    "
+                >
+
+                    <span style="color:#8b8078;font-size:12px;">
+                        Guests
+                    </span>
+
+                    <strong
+                        style="
+                            float:right;
+                            color:#3f3530;
+                            font-size:13px;
+                        "
+                    >
+                        {{ reservation.guests }}
+                    </strong>
+
+                </div>
+
+
+                <div style="padding:14px 18px;">
+
+                    <span style="color:#8b8078;font-size:12px;">
+                        Status
+                    </span>
+
+                    <strong
+                        style="
+                            float:right;
+                            color:#c48a5a;
+                            font-size:13px;
+                        "
+                    >
+                        {{ reservation.get_status_display }}
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            {% if reservation.special_request %}
+
+                <div style="margin-top:25px;">
+
+                    <strong
+                        style="
+                            display:block;
+                            margin-bottom:8px;
+                            color:#241a16;
+                            font-size:13px;
+                        "
+                    >
+                        Special Request
+                    </strong>
+
+                    <p
+                        style="
+                            margin:0;
+                            padding:15px;
+                            background:#faf7f2;
+                            color:#756b64;
+                            font-size:13px;
+                            line-height:1.6;
+                        "
+                    >
+                        {{ reservation.special_request }}
+                    </p>
+
+                </div>
+
+            {% endif %}
+
+
+            <p
+                style="
+                    margin:30px 0 0;
+                    color:#756b64;
+                    font-size:13px;
+                    line-height:1.7;
+                "
+            >
+                Your reservation is currently
+                <strong>{{ reservation.get_status_display|lower }}</strong>.
+                We will contact you if any additional information is required.
+            </p>
+
+        </div>
+
+
+        <!-- Footer -->
+
+        <div
+            style="
+                padding:25px 30px;
+                background:#faf7f2;
+                border-top:1px solid #e5ddd5;
+                text-align:center;
+            "
+        >
+
+            <p
+                style="
+                    margin:0;
+                    color:#756b64;
+                    font-size:12px;
+                "
+            >
+                Thank you for choosing Brew &amp; Bite.
+            </p>
+
+            <p
+                style="
+                    margin:8px 0 0;
+                    color:#9a8f87;
+                    font-size:11px;
+                "
+            >
+                Café &amp; Restaurant
+            </p>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

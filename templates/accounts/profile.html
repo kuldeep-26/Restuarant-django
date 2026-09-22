@@ -1,100 +1,235 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 
-{% block title %}My Account | Brew & Bite{% endblock%} 
+{% block title %}My Account | Brew & Bite{% endblock %}
 
 {% block content %}
 
-<section class="auth-section">
-  <div class="auth-container">
-    <div class="auth-header">
-      <p class="section-label">YOUR ACCOUNT</p>
+<section class="account-section">
 
-      <h1>My Account</h1>
+    <div class="account-container">
 
-      <p>Manage your Brew & Bite profile information.</p>
+        <!-- Header -->
+        <div class="account-header">
+
+            <p class="section-label">YOUR ACCOUNT</p>
+
+            <h1>Welcome, {{ user.username }}</h1>
+
+            <p>
+                Manage your profile and account preferences
+                at Brew & Bite.
+            </p>
+
+        </div>
+
+
+        <!-- Dashboard -->
+        <div class="account-dashboard">
+
+
+            <!-- Account Overview -->
+            <div class="account-card account-overview">
+
+                <div class="account-card-header">
+
+                    <div class="account-avatar">
+                        {{ user.username|first|upper }}
+                    </div>
+
+                    <div>
+                        <h2>{{ user.username }}</h2>
+
+                        {% if user.email %}
+                            <p>{{ user.email }}</p>
+                        {% else %}
+                            <p>No email address added</p>
+                        {% endif %}
+                    </div>
+
+                </div>
+
+
+                <div class="account-divider"></div>
+
+
+                <div class="account-details">
+
+                    <div class="account-detail">
+                        <span class="detail-label">USERNAME</span>
+                        <strong>{{ user.username }}</strong>
+                    </div>
+
+                    <div class="account-detail">
+                        <span class="detail-label">FIRST NAME</span>
+
+                        {% if user.first_name %}
+                            <strong>{{ user.first_name }}</strong>
+                        {% else %}
+                            <strong class="detail-empty">Not added</strong>
+                        {% endif %}
+                    </div>
+
+                    <div class="account-detail">
+                        <span class="detail-label">LAST NAME</span>
+
+                        {% if user.last_name %}
+                            <strong>{{ user.last_name }}</strong>
+                        {% else %}
+                            <strong class="detail-empty">Not added</strong>
+                        {% endif %}
+                    </div>
+
+                    <div class="account-detail">
+                        <span class="detail-label">EMAIL</span>
+
+                        {% if user.email %}
+                            <strong>{{ user.email }}</strong>
+                        {% else %}
+                            <strong class="detail-empty">Not added</strong>
+                        {% endif %}
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Edit Profile -->
+            <div class="account-card">
+
+                <div class="account-card-heading">
+
+                    <p class="card-label">PROFILE</p>
+
+                    <h2>Edit Profile</h2>
+
+                    <p>
+                        Keep your personal information up to date.
+                    </p>
+
+                </div>
+
+
+                <form method="POST" class="auth-form">
+
+                    {% csrf_token %}
+
+
+                    <div class="form-group">
+
+                        <label for="first_name">
+                            First Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="first_name"
+                            name="first_name"
+                            value="{{ user.first_name }}"
+                            placeholder="Enter your first name"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="last_name">
+                            Last Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="last_name"
+                            name="last_name"
+                            value="{{ user.last_name }}"
+                            placeholder="Enter your last name"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            Email Address
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            value="{{ user.email }}"
+                            placeholder="Enter your email address"
+                        >
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="primary-button auth-submit"
+                    >
+                        SAVE CHANGES
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <!-- Account Actions -->
+            <div class="account-card account-actions-card">
+
+                <div class="account-card-heading">
+
+                    <p class="card-label">SECURITY</p>
+
+                    <h2>Account Security</h2>
+
+                    <p>
+                        Manage your password and account access.
+                    </p>
+
+                </div>
+
+
+                <div class="account-actions">
+
+                    <a
+                        href="{% url 'password_change' %}"
+                        class="account-action"
+                    >
+
+                        <div class="action-icon">
+                            🔐
+                        </div>
+
+                        <div class="action-content">
+
+                            <strong>Change Password</strong>
+
+                            <span>
+                                Update your account password
+                            </span>
+
+                        </div>
+
+                        <span class="action-arrow">
+                            →
+                        </span>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
     </div>
 
-    <div class="auth-card">
-      <div class="profile-welcome">
-        <h2>Welcome, {{ user.username }}</h2>
-
-        <p>Update your personal information below.</p>
-      </div>
-
-      <form method="POST" class="auth-form">
-        {% csrf_token %}
-
-        <!-- Username -->
-
-        <div class="form-group">
-          <label> Username </label>
-
-          <input type="text" value="{{ user.username }}" disabled />
-
-          <small class="profile-help"> Username cannot be changed. </small>
-        </div>
-
-        <!-- First Name -->
-
-        <div class="form-group">
-          <label for="first_name"> First Name </label>
-
-          <input
-            type="text"
-            id="first_name"
-            name="first_name"
-            value="{{ user.first_name }}"
-            placeholder="Enter your first name"
-          />
-        </div>
-
-        <!-- Last Name -->
-
-        <div class="form-group">
-          <label for="last_name"> Last Name </label>
-
-          <input
-            type="text"
-            id="last_name"
-            name="last_name"
-            value="{{ user.last_name }}"
-            placeholder="Enter your last name"
-          />
-        </div>
-
-        <!-- Email -->
-
-        <div class="form-group">
-          <label for="email"> Email Address </label>
-
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value="{{ user.email }}"
-            placeholder="Enter your email address"
-          />
-        </div>
-
-        <button type="submit" class="primary-button auth-submit">
-          SAVE CHANGES
-        </button>
-      </form>
-
-      <div class="profile-actions">
-        <a href="{% url 'password_change' %}" class="profile-secondary-button">
-          CHANGE PASSWORD
-        </a>
-      </div>
-
-      <div class="auth-footer">
-        <p>
-          Logged in as
-          <strong>{{ user.username }}</strong>
-        </p>
-      </div>
-    </div>
-  </div>
 </section>
 
 {% endblock %}

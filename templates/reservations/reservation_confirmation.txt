@@ -1,0 +1,32 @@
+Hello {{ reservation.name }},
+
+Thank you for choosing Brew & Bite.
+
+We have received your table reservation request.
+
+RESERVATION DETAILS
+-------------------
+
+Name: {{ reservation.name }}
+
+Date: {{ reservation.date|date:"d M Y" }}
+
+Time: {{ reservation.time|time:"g:i A" }}
+
+Guests: {{ reservation.guests }}
+
+Status: {{ reservation.get_status_display }}
+
+{% if reservation.special_request %}
+Special Request:
+{{ reservation.special_request }}
+{% endif %}
+
+Your reservation is currently pending confirmation.
+
+Our team will review your request and confirm your table shortly.
+
+Thank you for choosing Brew & Bite.
+
+Brew & Bite
+Café & Restaurant

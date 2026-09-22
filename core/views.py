@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.db.models import Avg, Count
 from menu.models import MenuItem
 from .models import (GalleryImage, Review)
-from .forms import (ContactMessageForm, ReviewForm)
+from .forms import (ContactMessageForm, ReviewForm, )
 
 def home(request):
 

@@ -1,0 +1,108 @@
+{% extends 'base.html' %} 
+
+{% block title %}Book a Table | Brew & Bite{% endblock %} 
+
+{% block content %}
+
+<section class="reservation-section">
+  <div class="reservation-container">
+    <div class="reservation-header">
+      <p class="section-label">RESERVATIONS</p>
+
+      <h1>Book a Table</h1>
+
+      <p>
+        Reserve your table at Brew & Bite and enjoy handcrafted food, coffee,
+        and memorable moments.
+      </p>
+    </div>
+
+    <div class="reservation-card">
+      <div class="reservation-card-header">
+        <h2>Make a Reservation</h2>
+
+        <p>Please provide your details below.</p>
+      </div>
+
+      <form method="POST" class="reservation-form">
+        {% csrf_token %} {% if form.non_field_errors %}
+
+        <div class="reservation-errors">
+          {% for error in form.non_field_errors %}
+          <p>{{ error }}</p>
+          {% endfor %}
+        </div>
+
+        {% endif %}
+
+        <div class="reservation-grid">
+          <div class="reservation-field">
+            <label for="{{ form.name.id_for_label }}"> Name </label>
+
+            {{ form.name }} {% for error in form.name.errors %}
+            <span class="field-error"> {{ error }} </span>
+            {% endfor %}
+          </div>
+
+          <div class="reservation-field">
+            <label for="{{ form.email.id_for_label }}"> Email </label>
+
+            {{ form.email }} {% for error in form.email.errors %}
+            <span class="field-error"> {{ error }} </span>
+            {% endfor %}
+          </div>
+
+          <div class="reservation-field">
+            <label for="{{ form.phone.id_for_label }}"> Phone Number </label>
+
+            {{ form.phone }} {% for error in form.phone.errors %}
+            <span class="field-error"> {{ error }} </span>
+            {% endfor %}
+          </div>
+
+          <div class="reservation-field">
+            <label for="{{ form.guests.id_for_label }}">
+              Number of Guests
+            </label>
+
+            {{ form.guests }} {% for error in form.guests.errors %}
+            <span class="field-error"> {{ error }} </span>
+            {% endfor %}
+          </div>
+
+          <div class="reservation-field">
+            <label for="{{ form.date.id_for_label }}"> Date </label>
+
+            {{ form.date }} {% for error in form.date.errors %}
+            <span class="field-error"> {{ error }} </span>
+            {% endfor %}
+          </div>
+
+          <div class="reservation-field">
+            <label for="{{ form.time.id_for_label }}"> Time </label>
+
+            {{ form.time }} {% for error in form.time.errors %}
+            <span class="field-error"> {{ error }} </span>
+            {% endfor %}
+          </div>
+
+          <div class="reservation-field reservation-full">
+            <label for="{{ form.special_request.id_for_label }}">
+              Special Request
+            </label>
+
+            {{ form.special_request }} {% for error in form.special_request.errors %}
+            <span class="field-error"> {{ error }} </span>
+            {% endfor %}
+          </div>
+        </div>
+
+        <button type="submit" class="primary-button reservation-submit">
+          REQUEST RESERVATION
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

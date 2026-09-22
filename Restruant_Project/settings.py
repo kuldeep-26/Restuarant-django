@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'core',
     'menu',
+    'reservation',
     'accounts'
 ]
 
@@ -136,3 +137,4 @@ LOGOUT_REDIRECT_URL = '/'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 DEFAULT_FROM_EMAIL = 'Brew & Bite <noreply@brewandbite.com>'
+RESTAURANT_EMAIL = 'yourrestaurantemail@example.com'

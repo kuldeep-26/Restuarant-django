@@ -1,0 +1,71 @@
+{% extends 'base.html' %} 
+
+{% block title %}Reservation Received | Brew & Bite{% endblock %} 
+
+{% block content %}
+
+<section class="reservation-section">
+  <div class="reservation-container">
+    <div class="reservation-success">
+      <div class="success-icon">✓</div>
+
+      <p class="section-label">RESERVATION RECEIVED</p>
+
+      <h1>Thank You!</h1>
+
+      <p>
+        Your table reservation request has been received. Our team will review
+        your request and confirm your reservation shortly.
+      </p>
+
+      <!-- Reservation Details -->
+
+      <div class="reservation-summary">
+        <div class="summary-heading">
+          <h2>Your Reservation</h2>
+        </div>
+
+        <div class="summary-row">
+          <span>Date</span>
+
+          <strong> {{ reservation.date|date:"d M Y" }} </strong>
+        </div>
+
+        <div class="summary-row">
+          <span>Time</span>
+
+          <strong> {{ reservation.time|time:"g:i A" }} </strong>
+        </div>
+
+        <div class="summary-row">
+          <span>Guests</span>
+
+          <strong> {{ reservation.guests }} </strong>
+        </div>
+
+        <div class="summary-row">
+          <span>Name</span>
+
+          <strong> {{ reservation.name }} </strong>
+        </div>
+
+        <div class="summary-row">
+          <span>Status</span>
+
+          <strong class="summary-status">
+            {{ reservation.get_status_display }}
+          </strong>
+        </div>
+      </div>
+
+      <p class="reservation-note">
+        Please keep these details for your reference. Your reservation is
+        currently pending confirmation.
+      </p>
+
+      <a href="{% url 'home' %}" class="primary-button"> BACK TO HOME </a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

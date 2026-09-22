@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>New Reservation</title>
+
+</head>
+
+
+<body
+    style="
+        margin:0;
+        padding:0;
+        background:#f8f5ef;
+        font-family:Arial, Helvetica, sans-serif;
+        color:#3f3530;
+    "
+>
+
+    <div
+        style="
+            max-width:600px;
+            margin:40px auto;
+            background:#ffffff;
+            border:1px solid #e5ddd5;
+        "
+    >
+
+        <div
+            style="
+                padding:30px;
+                background:#241a16;
+                color:#ffffff;
+                text-align:center;
+            "
+        >
+
+            <h1
+                style="
+                    margin:0;
+                    font-family:Georgia, serif;
+                    font-size:28px;
+                    font-weight:500;
+                "
+            >
+                New Reservation
+            </h1>
+
+            <p
+                style="
+                    margin:8px 0 0;
+                    color:#ddd5cd;
+                    font-size:12px;
+                "
+            >
+                Brew &amp; Bite
+            </p>
+
+        </div>
+
+
+        <div style="padding:30px;">
+
+            <p
+                style="
+                    margin:0 0 25px;
+                    color:#756b64;
+                    font-size:14px;
+                    line-height:1.7;
+                "
+            >
+                A new table reservation has been submitted.
+            </p>
+
+
+            <div
+                style="
+                    border:1px solid #e5ddd5;
+                "
+            >
+
+                <div style="padding:14px 18px;">
+                    <strong>Customer</strong>
+                    <span style="float:right;">
+                        {{ reservation.name }}
+                    </span>
+                </div>
+
+                <div
+                    style="
+                        padding:14px 18px;
+                        border-top:1px solid #eee7df;
+                    "
+                >
+                    <strong>Email</strong>
+                    <span style="float:right;">
+                        {{ reservation.email }}
+                    </span>
+                </div>
+
+                <div
+                    style="
+                        padding:14px 18px;
+                        border-top:1px solid #eee7df;
+                    "
+                >
+                    <strong>Phone</strong>
+                    <span style="float:right;">
+                        {{ reservation.phone }}
+                    </span>
+                </div>
+
+                <div
+                    style="
+                        padding:14px 18px;
+                        border-top:1px solid #eee7df;
+                    "
+                >
+                    <strong>Date</strong>
+                    <span style="float:right;">
+                        {{ reservation.date|date:"d M Y" }}
+                    </span>
+                </div>
+
+                <div
+                    style="
+                        padding:14px 18px;
+                        border-top:1px solid #eee7df;
+                    "
+                >
+                    <strong>Time</strong>
+                    <span style="float:right;">
+                        {{ reservation.time|time:"g:i A" }}
+                    </span>
+                </div>
+
+                <div
+                    style="
+                        padding:14px 18px;
+                        border-top:1px solid #eee7df;
+                    "
+                >
+                    <strong>Guests</strong>
+                    <span style="float:right;">
+                        {{ reservation.guests }}
+                    </span>
+                </div>
+
+                <div
+                    style="
+                        padding:14px 18px;
+                        border-top:1px solid #eee7df;
+                    "
+                >
+                    <strong>Status</strong>
+                    <span
+                        style="
+                            float:right;
+                            color:#c48a5a;
+                        "
+                    >
+                        {{ reservation.get_status_display }}
+                    </span>
+                </div>
+
+            </div>
+
+
+            {% if reservation.special_request %}
+
+                <div style="margin-top:25px;">
+
+                    <strong>
+                        Special Request
+                    </strong>
+
+                    <p
+                        style="
+                            margin:10px 0 0;
+                            padding:15px;
+                            background:#faf7f2;
+                            line-height:1.6;
+                        "
+                    >
+                        {{ reservation.special_request }}
+                    </p>
+
+                </div>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
