@@ -1,5 +1,10 @@
 # Python
 __pycache__/
+*.py[cod]
+*$py.class
+
+# Environment variables
+.env
 
 # Virtual environment
 .venv/
@@ -7,9 +12,11 @@ __pycache__/
 # Django
 *.log
 db.sqlite3
+staticfiles/
 
 # IDE
 .vscode/
+.idea/
 
 # OS
 .DS_Store
