@@ -6,7 +6,9 @@ from django.shortcuts import get_object_or_404
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 from django.conf import settings
+from django.contrib.auth.decorators import login_required
 
+@login_required(login_url='login')
 def reservation(request):
 
     if request.method == 'POST':
