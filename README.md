@@ -5,7 +5,7 @@ A modern, responsive restaurant and café website built with **Django
 customers to explore the menu, discover the café, view the gallery and
 reviews, manage their account, and make table reservations.
 
-> **Live Demo:** > `https://restuarant-django.onrender.com/`
+> **Live Demo:** > https://restuarant-django.onrender.com/
 
 ------------------------------------------------------------------------
 
