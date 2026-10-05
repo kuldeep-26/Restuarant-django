@@ -100,8 +100,12 @@ WSGI_APPLICATION = 'Restruant_Project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'rest_django',
+        'USER': 'Restaurant_User',
+        'PASSWORD': os.getenv('DBPASSWORD'),
+        'HOST': 'localhost',
+        'PORT': '5432'
     }
 }
 
@@ -158,10 +162,24 @@ LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
 # Development email backend
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
-DEFAULT_FROM_EMAIL = 'Brew & Bite <noreply@brewandbite.com>'
-RESTAURANT_EMAIL = 'yourrestaurantemail@example.com'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+
+DEFAULT_FROM_EMAIL = os.getenv(
+    'DEFAULT_FROM_EMAIL',
+    'Brew & Bite'
+)
+
+RESTAURANT_EMAIL = os.getenv(
+    'RESTAURANT_EMAIL',
+    EMAIL_HOST_USER
+)
 
 # Production security
 SECURE_BROWSER_XSS_FILTER = True
