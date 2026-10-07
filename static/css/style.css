@@ -5561,3 +5561,82 @@ body {
   font-size: 11px !important;
   line-height: 1.7 !important;
 }
+
+/* ================================
+   404 ERROR PAGE
+================================ */
+
+.error-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.error-content {
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+.error-number {
+    font-size: clamp(100px, 18vw, 190px);
+    font-weight: 800;
+    line-height: 0.9;
+    letter-spacing: -8px;
+    margin-bottom: 25px;
+}
+
+.error-content h1 {
+    font-size: clamp(30px, 5vw, 48px);
+    margin-bottom: 20px;
+}
+
+.error-content p {
+    max-width: 550px;
+    margin: 0 auto 35px;
+    font-size: 17px;
+    line-height: 1.7;
+    opacity: 0.75;
+}
+
+.error-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.error-actions .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+@media (max-width: 600px) {
+
+    .error-page {
+        padding: 60px 20px;
+    }
+
+    .error-number {
+        letter-spacing: -4px;
+    }
+
+    .error-content p {
+        font-size: 15px;
+    }
+
+    .error-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .error-actions .btn {
+        width: 100%;
+        max-width: 280px;
+    }
+}
