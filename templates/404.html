@@ -1,44 +1,64 @@
 {% load static %}
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Page Not Found | Brew & Bite</title>
+    <title>404 | Brew & Bite</title>
 
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
 
-<body>
+  <body>
+    <main class="restaurant-404">
+      <!-- Decorative coffee beans -->
+      <span class="coffee-bean bean-1"></span>
+      <span class="coffee-bean bean-2"></span>
+      <span class="coffee-bean bean-3"></span>
 
-    <main class="error-page">
+      <div class="error-wrapper">
+        <!-- Coffee Illustration -->
+        <div class="coffee-illustration">
+          <div class="coffee-steam steam-1"></div>
+          <div class="coffee-steam steam-2"></div>
+          <div class="coffee-steam steam-3"></div>
 
-        <div class="error-content">
+          <div class="coffee-cup">
+            <div class="coffee"></div>
+          </div>
 
-            <div class="error-number">404</div>
+          <div class="coffee-handle"></div>
 
-            <h1>Oops! This table is empty.</h1>
-
-            <p>
-                The page you're looking for seems to have wandered off.
-                Don't worry, there's plenty more to explore at Brew & Bite.
-            </p>
-
-            <div class="error-actions">
-                <a href="{% url 'home' %}" class="btn btn-primary">
-                    Back to Home
-                </a>
-
-                <a href="{% url 'menu' %}" class="btn btn-secondary">
-                    Explore Our Menu
-                </a>
-            </div>
-
+          <div class="coffee-saucer"></div>
         </div>
 
-    </main>
+        <!-- Error Content -->
+        <div class="restaurant-error-content">
+          <span class="error-label">BREW & BITE</span>
 
-</body>
+          <div class="error-number">404</div>
+
+          <h1>Oops! This table is empty.</h1>
+
+          <p>
+            Looks like the page you're looking for has left the table. Don't
+            worry — there's still plenty of good food and great coffee waiting
+            for you.
+          </p>
+
+          <div class="error-actions">
+            <a href="{% url 'home' %}" class="btn btn-primary">
+              Back to Home
+            </a>
+
+            <a href="{% url 'menu' %}" class="btn btn-secondary">
+              Explore Menu
+            </a>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
 </html>
